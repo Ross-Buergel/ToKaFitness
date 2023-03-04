@@ -1,0 +1,271 @@
+:root {
+  --secondary-colour: rgb(0, 10, 100);
+  --hover-colour: rgb(0, 0, 100);
+}
+
+body {
+  margin: 0%;
+}
+
+header {
+  background: var(--secondary-colour);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+  float: center;
+  padding: 0.625rem 0%;
+  text-align: center;
+  margin-left: -8rem;
+}
+
+nav ul {
+  margin: 0%;
+  padding: 0%;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 7rem;
+  position: relative;
+}
+
+.create-line {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.create-line::before {
+  content: '';
+  display: block;
+  height: 0.15rem;
+  background-color: #FFFFFF;
+
+
+  position: absolute;
+  top: 0% auto;
+  width: 0%;
+
+  transition: all ease-in-out 250ms;
+}
+
+.create-line:hover::before {
+  width: 100%;
+}
+
+.create-line-dropdown {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+.create-line-dropdown::before {
+  content: '';
+  display: block;
+  height: 0.15rem;
+  margin-top: -0.05rem !important;
+  background-color: var(--secondary-colour);
+
+  position: absolute;
+  top: 0% auto;
+  width: 0%;
+
+  transition: all ease-in-out 250ms;
+}
+
+.create-line-dropdown:hover::before {
+  width: 80%;
+}
+
+@media (max-width: 800px) {
+  nav li {
+    margin-left: 5.5rem;
+  }
+}
+
+
+li a {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif !important;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+li a:hover,
+.dropdown:hover .dropbtn {
+  background-color: var(--hover-colour);
+}
+
+
+
+
+
+
+.content-box {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: 100px;
+  margin-right:100px;
+}
+
+.content-box > div {
+  background: #e8e8e8;
+  flex: 50%;
+}
+
+.box {
+  margin-left: 150px;
+  margin-right: 150px;
+
+  height: 5px;
+  background: var(--hover-colour);
+  border-radius: 10px;
+}
+
+.standard-box {
+  display: flex;
+  flex-wrap: nowrap;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.standard-box>div {
+  background: #ededed;
+  margin-left: 200px;
+  margin-right: 200px;
+  flex: 50%;
+}
+
+.link-text {
+  color: rgb(0, 160, 255);
+  margin-left: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.error-text {
+  color: #F00 !important;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.standard-box-text {
+  color: rgb(0, 0, 0);
+  margin-left: 20px;
+  margin-right: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  word-wrap: break-word;
+  width:750px;
+  margin: auto;
+}
+
+.standard-box-title {
+  color: rgb(0, 0, 0);
+  margin-left: 30px;
+  margin-right: 30px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.input-box-text {
+  color: rgb(0, 0, 0);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+}
+
+.submit-button {
+  background-color: var(--secondary-colour);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  border-style: none;
+  transition: all ease-in-out 250ms;
+}
+.submit-button > a {
+  color: #FFFFFF !important;
+  text-decoration: none;
+}
+
+.submit-button:hover {
+  background-color: var(--hover-colour);
+}
+
+.footer-box {
+  display: flex;
+  flex-wrap: nowrap;
+  text-align: center;
+}
+
+.footer-box>div {
+  background: var(--secondary-colour);
+  flex: 50%;
+}
+
+.footer-box-title{
+  color: white;
+  margin-bottom: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.footer-box-text{
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  list-style: none;
+}
+
+@media (max-width: 1000px) {
+  .content-box>div {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+  
+  .standard-box>div {
+    margin-left: 100px !important;
+    margin-right: 100px !important;
+  }
+
+  nav li {
+    margin-left: 5.5rem;
+  }
+}
