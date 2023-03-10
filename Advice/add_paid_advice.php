@@ -24,12 +24,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($var = check_presence("price", $_POST["price"])) {
         $errors[] = $var;
     }
-    $price = $_POST['price'];
 
-    //checks that the message is not more than 500 characters
-    if (strlen($_POST["message"]) > 500) {
-        $errors[] = 'Your message is too long';
+    //checks the length of the variables to ensure they are not cut off by the database
+    if ($var = check_length("title", $_POST["title"], 2, 30)) {
+        $errors[] = $var;
     }
+    if ($var = check_length("message", $_POST["message"], 25, 500)) {
+        $errors[] = $var;
+    }
+
+    $price = $_POST['price'];
 
     //checks the price is greater than 0
     if ($_POST['price'] == "0.00" || $_POST['price'] = "0") {

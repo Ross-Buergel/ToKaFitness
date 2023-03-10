@@ -34,9 +34,15 @@ include("../includes/header.php");
                 $errors[] = 'Enter a valid email';
             }
 
-            //checks that the message is not more than 500 characters
-            if (strlen($_POST["message"]) > 500) {
-                $errors[] = 'Your message is too long';
+            //checks that the variables are not longer than the database allows
+            if ($var = check_length("email", $_POST["email"], 5, 30)) {
+                $errors[] = $var;
+            }
+            if ($var = check_length("title", $_POST["title"], 2, 30)) {
+                $errors[] = $var;
+            }
+            if ($var = check_length("message", $_POST["message"], 25, 500)) {
+                $errors[] = $var;
             }
 
             //checks there are no errors in the array

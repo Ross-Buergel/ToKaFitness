@@ -30,13 +30,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors[] = $var;
     }
 
-    //checks that the message is not more than 1000 characters
-    if (strlen($_POST["message"]) > 1000) {
-        $errors[] = 'Your message is too long';
+    //checks that the variables are not longer than the database column allows
+    if ($var = check_length("title", $_POST["title"], 2, 30)) {
+        $errors[] = $var;
+    }
+    if ($var = check_length("message", $_POST["message"], 25, 1000)) {
+        $errors[] = $var;
     }
 
 
-
+    //checks if any errors occured
     if (!isset($errors) || empty($errors) || $errors == null) {
         //assigns values to a variable
         $title = $_POST['title'];

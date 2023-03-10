@@ -117,6 +117,23 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
         if ($var = check_presence("password confirmation", $_POST["confirm_password"])) {
             $errors[] = $var;
         }
+
+        //checks the variables are not larger than the database allows
+        if ($var = check_length("first name", $_POST["first_name"], 0, 25)) {
+            $errors[] = $var;
+        }
+    
+        if ($var = check_length("last name", $_POST["last_name"], 0, 25)) {
+            $errors[] = $var;
+        }
+    
+        if ($var = check_length("email", $_POST["email"], 5, 40)) {
+            $errors[] = $var;
+        }
+    
+        if ($var = check_length("password", $_POST["password"], 4, 255)) {
+            $errors[] = $var;
+        }
     
         //checks that inputs that shouldnt contain an integer don't
         if ($var = check_contains_integer("First name", $_POST["first_name"])) {
@@ -171,6 +188,9 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
             password = SHA2('$password', 256)
              WHERE user_id = '".$_SESSION['user_id']."'";
             $result = mysqli_query($dbc, $query);
+
+            $_SESSION['first_name'] = $first_name;
+            $_SESSION['last_name'] = $last_name;
         }
     } else if (isset($_POST['new_password'])) {
         //checks the user entered the required information
@@ -183,6 +203,12 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
         if ($var = check_presence("new password confirmation", $_POST["confirm_new_password"])) {
             $errors[] = $var;
         }
+
+        //checks the length of the variables to ensure they are not too long for the database
+        if ($var = check_length("new password", $_POST["new password"], 4, 255)) {
+            $errors[] = $var;
+        }
+
         //checks the inputted password is the users old password
         $query = "SELECT * FROM tbl_users
         WHERE user_id = '" . $_SESSION['user_id'] . "'
