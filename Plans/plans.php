@@ -13,13 +13,13 @@ if (!isset($_SESSION['user_id'])) {
         <!-- creates the title -->
         <br><br>
         <div class="box"></div>
-        <h1 class="standard-box-title">Plans</h1>
+        <h1>Plans</h1>
         <div class="box"></div>
         <br><br>
 
         <!-- creates box that allows users to search for an item-->
         <form action="advice_overview.php" method="post">
-            <label for="search_item" class="standard-box-text">Search for Plan</label><br>
+            <label for="search_item">Search for Plan</label><br>
             <input name="search_item" type="text">
             <input type="submit" class="submit-button" value="Search">
         </form>
@@ -40,20 +40,25 @@ if (!isset($_SESSION['user_id'])) {
         }
         $result = mysqli_query($dbc, $query);
         
-        echo '<div class="box"></div><br><h2 class = "standard-box-text"><a href = "create_plan.php">Create Plan</a></h2><br>';
+        echo '<div class="box"></div><br>
+        <h2>
+        <a href = "create_plan.php">
+        Create Plan
+        </a>
+        </h2><br>';
 
 
         //checks that values were returned from the database then outputs all plans
-        echo '<div class="box"></div><h2 class = "standard-box-title">Your Plans</h2><div class="box"></div>';
+        echo '<div class="box"></div><h2>Your Plans</h2><div class="box"></div>';
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                echo "<h3 class = 'standard-box-title'><a href='plans_detailed.php?id=" . $row['plan_id'] .
+                echo "<h3><a href='plans_detailed.php?id=" . $row['plan_id'] .
                     "'>" . $row['title'] . "</a></h3>";
             }
         }
         //outputs a message if no plans were found
         else {
-            echo '<h3 class = "standard-box-title">No plans found or you have not made any plans yet</h3>';
+            echo '<h3>No plans found or you have not made any plans yet</h3>';
         }
         ?>
     </div>

@@ -36,9 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
 
             //outputs success message
             $code_success_message = '
-                <h2 class="standard-box-title">Code Accepted!</h2>
-                <h3 class = "standard-box-text">You have received the following benefits:</h3>
-                <p class = "standard-box-text">';
+                <h2>Code Accepted!</h2>
+                <h3>You have received the following benefits:</h3>
+                <p>';
             while ($row = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
                 //checks what the code is and gives user access to all paid content in the event of an 'All' or specific paid content
                 if ($row['paid_content_id'] = "All") {
@@ -231,10 +231,10 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
     <div><br><br>
         <!--creates a title at the top of the page-->
         <div class="box"></div>
-        <h1 class="standard-box-title">Account Settings</h1>
+        <h1>Account Settings</h1>
         <div class="box"></div>
 
-        <h2 class="standard-box-title">Redeem a Code</h2>
+        <h2>Redeem a Code</h2>
         <?php
         //outputs errors that occur if user inputs a code
         if (isset($contains_error) && $contains_error == True && isset($_POST['code'])) {
@@ -249,7 +249,7 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
         } ?>
         <!--creates the boxes needed to input a code-->
         <form action="account_settings.php" method="POST">
-            <label for="code" class="standard-box-text">Code</label><br>
+            <label for="code">Code</label><br>
             <input name="code" type="text"><br><br>
 
             <input type="submit" class="submit-button"><br>
@@ -258,11 +258,11 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
         <!--creates a heading for the accessibility section of the page-->
         <br><br>
         <div class="box"></div>
-        <h2 class="standard-box-title">Accessibility</h2>
+        <h2>Accessibility</h2>
 
         <!--creates the form needed to submit colour scheme requirements-->
         <form action="account_settings.php" method="POST">
-            <label for="colour_type" class="standard-box-text">Colour Blindness Type</label><br>
+            <label for="colour_type">Colour Blindness Type</label><br>
             <select name="colour_type">
                 <option value="N/A">N/A</option>
                 <option value="Red-Green">Red-Green</option>
@@ -273,13 +273,13 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
         </form>
 
         <!--creates the paragraph explaining how to increase font size-->
-        <p class="standard-box-text">
+        <p>
             For increased font and button size please use the zoom tool built into your browser.
             It can be accessed by holding the ctrl key and using the scroll wheel on your mouse or
             by holding the ctrl key and + or - (next to the backspace key)
         </p><br>
         <div class="box"></div>
-        <h2 class="standard-box-title">Account Details</h2>
+        <h2>Account Details</h2>
         <?php
         //outputs errors that occur if user inputs account details
         if (isset($contains_error) && $contains_error == True && isset($_POST['first_name'])) {
@@ -309,25 +309,25 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
             
                 ?>
                 <!-- creates the required input boxes -->
-                <label for="first_name" class="standard-box-text">First Name</label><br>
+                <label for="first_name">First Name</label><br>
                 <input name="first_name" type="text" value="<?php echo $first_name ?>"><br><br>
 
-                <label for="last_name" class="standard-box-text">Last Name</label><br>
+                <label for="last_name">Last Name</label><br>
                 <input name="last_name" type="text" value="<?php echo $last_name ?>"><br><br>
 
-                <label for="email" class="standard-box-text">Email</label><br>
+                <label for="email">Email</label><br>
                 <input name="email" type="text" value="<?php echo $email ?>"><br><br>
 
-                <label for="password" class="standard-box-text">Password</label><br>
+                <label for="password">Password</label><br>
                 <input name="password" type="password"><br><br>
 
-                <label for="confirm_password" class="standard-box-text">Confirm Password</label><br>
+                <label for="confirm_password">Confirm Password</label><br>
                 <input name="confirm_password" type="password"><br><br>
 
                 <input type="submit" class="submit-button"><br><br>
         </form>
         <div class="box"></div>
-        <h2 class="standard-box-title">Change Password</h2>
+        <h2>Change Password</h2>
         <?php
         //outputs errors that occur if user inputs account details
         if (isset($contains_error) && $contains_error == True && isset($_POST['new_password'])) {
@@ -340,23 +340,23 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
         } ?>
         <form action="account_settings.php" method="POST">
             <!-- creates the requred input boxes -->
-            <label for="old_password" class="standard-box-text">Old Password</label><br>
+            <label for="old_password">Old Password</label><br>
             <input name="old_password" type="password"><br><br>
 
-            <label for="new_password" class="standard-box-text">New Password</label><br>
+            <label for="new_password">New Password</label><br>
             <input name="new_password" type="password"><br><br>
 
-            <label for="confirm_new_password" class="standard-box-text">Confirm New Password</label><br>
+            <label for="confirm_new_password">Confirm New Password</label><br>
             <input name="confirm_new_password" type="password"><br><br>
 
             <input type="submit" class="submit-button"><br><br>
         </form>
 
         <div class="box"></div>
-        <h2 class="standard-box-title">Delete Account</h2>
+        <h2>Delete Account</h2>
         <!-- creates the required input boxes-->
         <form action="account_settings.php" method="POST">
-            <label for="confirm_delete" class="standard-box-text">Confirm Delete</label><br>
+            <label for="confirm_delete">Confirm Delete</label><br>
             <input type="checkbox" name="confirm_delete" value="True"><br><br>
 
             <input type="submit" class="submit-button" value="Delete Account" name="delete_account"><br><br>

@@ -7,7 +7,7 @@ include("../includes/header.php");
         <!-- creates the titles -->
         <br><br>
         <div class="box"></div>
-        <h1 class="standard-box-title">Create a Plan</h1>
+        <h1>Create a Plan</h1>
         <div class="box"></div>
 <?php
 if (!isset($_SESSION['user_id'])) {
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = mysqli_query($dbc, $query);
         ?>
 
-        <h2 class="standard-box-title">Plan Created</h2>
+        <h2>Plan Created</h2>
         <div class="box"></div><br>
 <?php
     }
@@ -68,10 +68,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <!-- creates input boxes for each input-->
         <form name="form" action="create_plan.php" method="post">
-            <label for="title" class="standard-box-text">Title</label><br>
+            <label for="title">Title</label><br>
             <input name="title" type="text"><br><br>
 
-            <label for="message" class="standard-box-text">Message</label><br>
+            <label for="message">Message</label><br>
+            
             <textarea name="message" id="text" cols="50" rows="20" oninput="countText()"
                 style="resize:none;"></textarea><br>
 

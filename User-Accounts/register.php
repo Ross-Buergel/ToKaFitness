@@ -30,6 +30,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors[] = $var;
     }
 
+    //checks the length of each variable to ensure it is not cut off when inserted into the database
+    if ($var = check_length("first name", $_POST["first_name"], 0, 25)) {
+        $errors[] = $var;
+    }
+
+    if ($var = check_length("last name", $_POST["last_name"], 0, 25)) {
+        $errors[] = $var;
+    }
+
+    if ($var = check_length("email", $_POST["email"], 5, 40)) {
+        $errors[] = $var;
+    }
+
+    if ($var = check_length("password", $_POST["password"], 4, 255)) {
+        $errors[] = $var;
+    }
+
     //checks that inputs that shouldnt contain an integer dont
     if ($var = check_contains_integer("First name", $_POST["first_name"])) {
         $errors[] = $var;
@@ -69,6 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         VALUES ('$first_name','$last_name','$email',SHA2('$password', 256),NOW())";
         $result = mysqli_query($dbc, $query);
 
+        //redirects user to the login page
         header('Location: login.php');
     }
 
@@ -79,9 +97,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- creates the title -->
         <br><br>
         <div class="box"></div>
-        <h1 class="standard-box-title">Register</h1>
+        <h1>Register</h1>
         <div class="box"></div>
         <br><br>
+
         <?php
         //outputs errors
         if (isset($errors) && !empty($errors && $errors != null)) {
@@ -96,19 +115,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <!-- creates input boxes for each input-->
         <form action="register.php" method="post">
-            <label for="first_name" class="standard-box-text">First Name</label><br>
+            <label for="first_name">First Name</label><br>
             <input name="first_name" type="text"><br><br>
 
-            <label for="last_name" class="standard-box-text">Last Name</label><br>
+            <label for="last_name">Last Name</label><br>
             <input name="last_name" type="text"><br><br>
 
-            <label for="email" class="standard-box-text">Email</label><br>
+            <label for="email">Email</label><br>
             <input name="email" type="text"><br><br>
 
-            <label for="password" class="standard-box-text">Password</label><br>
+            <label for="password">Password</label><br>
             <input name="password" type="password"><br><br>
 
-            <label for="confirm_password" class="standard-box-text">Confirm Password</label><br>
+            <label for="confirm_password">Confirm Password</label><br>
             <input name="confirm_password" type="password"><br><br>
 
             <input type="submit" class="submit-button">

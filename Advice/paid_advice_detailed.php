@@ -27,10 +27,10 @@ echo '<div class = "standard-box"><div>';
 if (mysqli_num_rows($payment_confirmation) > 0) {
     while ($row = mysqli_fetch_array($paid_content, MYSQLI_ASSOC)) {
         echo '<br><br><div class="box"></div>
-        <h1 class = "standard-box-title">' . $row['title'] . '</h1>
+        <h1>' . $row['title'] . '</h1>
         <div class="box"></div>
 
-        <p class = "standard-box-text">' . $row['message'] . '</p>
+        <p>' . $row['message'] . '</p>
         <div class="box"></div>
         <br>';
     }
@@ -38,10 +38,10 @@ if (mysqli_num_rows($payment_confirmation) > 0) {
 } else {
     while ($row = mysqli_fetch_array($paid_content, MYSQLI_ASSOC)) {
         echo '<br><br><div class="box"></div>
-    <h1 class = "standard-box-title">' . $row['title'] . '</h1>
+    <h1>' . $row['title'] . '</h1>
     <div class="box"></div>
 
-    <h2 class = "standard-box-text">This advice costs £' . $row['price'] . '</h2>
+    <h2>This advice costs £' . $row['price'] . '</h2>
     <div class="box"></div>
     <br>
     <button class = "submit-button"><a href = "checkout.php?id=' . $id . '">Continue to Checkout</a></button>';

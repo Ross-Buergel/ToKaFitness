@@ -41,9 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- creates the title -->
         <br><br>
         <div class="box"></div>
-        <h1 class="standard-box-title">Posts</h1>
+        <h1>Posts</h1>
         <div class="box"></div>
-        <h2 class="standard-box-title">Make a Post</h2>
+        <h2>Make a Post</h2>
         <br><br>
         <?php
         //outputs errors
@@ -57,17 +57,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         //confirmation message of post
         else if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            echo '<h2 class = "standard-box-title">Post Successfully Made</h2>';
+            echo '<h2>Post Successfully Made</h2>';
         }
 
         if (isset($_SESSION['user_id'])) { ?>
 
             <!-- creates input boxes for each input-->
             <form name="form" action="posts.php" method="post">
-                <label for="title" class="standard-box-text">Title</label><br>
+                <label for="title">Title</label><br>
                 <input name="title" type="text"><br><br>
 
-                <label for="message" class="standard-box-text">Message</label><br>
+                <label for="message">Message</label><br>
                 <textarea name="message" id="text" cols="50" rows="4" oninput="countText()"
                     style="resize:none;"></textarea><br>
 
@@ -79,32 +79,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
             <?php
         } else {
-            echo '<h2 class="standard-box-title">You must be logged in to make a post</h2>';
+            echo '<h2>You must be logged in to make a post</h2>';
         }
         //gets all posts from the database
         $query = "SELECT * FROM tbl_social
         ORDER BY post_id DESC";
         $reviews = mysqli_query($dbc, $query);
         echo '<div class="box"></div>
-        <h2 class = "standard-box-title">All Posts</h2>';
+        <h2>All Posts</h2>';
 
         //gets the name of the user that made each post and outputs the posts
-        while ($reviews_array = mysqli_fetch_array($reviews, MYSQLI_ASSOC)) {
+        while ($reviews_array = mysqli_fetch_array($reviews, MYSQLI_ASSOC)) :
             $query = "SELECT * FROM tbl_users
-        WHERE user_id = '" . $reviews_array['user_id'] . "'";
+            WHERE user_id = '" . $reviews_array['user_id'] . "'";
             $user_details = mysqli_query($dbc, $query);
-            while ($user_details_array = mysqli_fetch_array($user_details, MYSQLI_ASSOC)) {
-                echo '<div class="box"></div><br>
-                <p class = "standard-box-text"><strong>' . $user_details_array['first_name'] . " " . $user_details_array['last_name'] .
-                '<br>' . $reviews_array['title'] . '</strong><br>' .
-                $reviews_array['message'] . '</p><br>';
 
-                if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == 1){
-                    echo "<h3 class = 'standard-box-title'><a href='delete_post.php?id=" . $reviews_array['post_id'] .
-                    "'>Delete Post</a></h3>";
-                }
-            }
-        }
+            while ($user_details_array = mysqli_fetch_array($user_details, MYSQLI_ASSOC)) :
+                ?>
+                <div class="box"></div><br>
+                <p>
+                    <strong>
+                        <?php echo $user_details_array['first_name']?> <?php echo $user_details_array['last_name']?>
+                        <br><?php echo $reviews_array['title']?>
+                    </strong><br>
+                    <?php echo $reviews_array['message']?>
+                </p><br>
 
-        echo "</div></div>";
-        include("../includes/footer.html"); ?>
+                <?php
+                if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == 1):
+                    ?>
+                    <h3>
+                        <a href='delete_post.php?id=<?php echo $reviews_array['post_id']?>'>Delete Post</a>
+                    </h3>
+                    <?php
+                endif;
+            endwhile;
+        endwhile;
+        ?>
+    </div>
+</div>
+
+<?php include("../includes/footer.html"); ?>

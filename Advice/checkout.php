@@ -23,10 +23,10 @@ $result = mysqli_query($dbc, $query);
     <div>
         <br><br>
         <div class="box"></div>
-        <h1 class="standard-box-title">Checkout</h1>
+        <h1>Checkout</h1>
         <div class="box"></div>
 
-        <h2 class="standard-box-text">Thank you for your purchase</h2>
+        <h2>Thank you for your purchase</h2>
     </div>
 </div>
 <?php include("../includes/footer.html"); ?>

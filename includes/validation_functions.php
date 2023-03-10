@@ -27,3 +27,13 @@ function check_contains_integer($item_name, $variable)
         return $item_name . " cannot contain an integer";
     }
 }
+
+function check_length($item_name, $variable, $min_length, $max_length) {
+    if (strlen($variable) > $max_length){
+        return $item_name . " cannot be longer than " . $max_length . " characters";
+    }
+
+    else if (strlen($variable) < $min_length){
+        return $item_name . " cannot be shorter than " . $min_length . " characters";
+    }
+}

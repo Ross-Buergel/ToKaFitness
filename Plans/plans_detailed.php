@@ -22,10 +22,10 @@ echo '<div class = "standard-box"><div>';
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         echo '<br><br><div class="box"></div>
-        <h1 class = "standard-box-title">' . $row['title'] . '</h1>
+        <h1>' . $row['title'] . '</h1>
         <div class="box"></div>
 
-        <p class = "standard-box-text">' . $row['message'] . '</p>
+        <p>' . $row['message'] . '</p>
         <div class="box"></div>';
     }
 }

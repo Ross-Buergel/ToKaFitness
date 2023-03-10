@@ -2,12 +2,12 @@
 include("./includes/header.php"); ?>
 <div class="standard-box">
     <div>
-        <h1 class="standard-box-title">Home</h1>
+        <h1>Home</h1>
         <div class="box"></div><br>
 
         <div class="content-box">
             <div>
-                <h2 class="standard-box-title">Services</h2>
+                <h2>Services</h2>
             </div>
         </div>
         <!-- creates the first content box with the image on the left and the text on the right-->
@@ -17,8 +17,8 @@ include("./includes/header.php"); ?>
                 with personal trainer in gym" style="width:35rem;height:22.5rem">
             </div>
             <div>
-                <h3 class="standard-box-title">Professional Fitness Advice</h3>
-                <p class="standard-box-text">
+                <h3>Professional Fitness Advice</h3>
+                <p>
                     Using our services, you can contact one of our fitness professionals with any questions you may have
                     about fitness or maintaining a healthy lifestyle. We will leave no question unanswered, no matter
                     how
@@ -29,8 +29,8 @@ include("./includes/header.php"); ?>
         <!-- creates the second content box with the image on the right and the text on the left-->
         <div class="content-box">
             <div>
-                <h3 class="standard-box-title">Self-Help Services</h3>
-                <p class="standard-box-text">
+                <h3>Self-Help Services</h3>
+                <p>
                     If you would rather look for answers youself than ask others questions, try our handy self help
                     services built in to this website. It even comes with a search bar to help you find what your
                     looking for.
@@ -48,8 +48,8 @@ include("./includes/header.php"); ?>
                 style="width:35rem;height:22.5rem">
             </div>
             <div>
-                <h3 class="standard-box-title">Customisable Health and Fitness Plans</h3>
-                <p class="standard-box-text">
+                <h3>Customisable Health and Fitness Plans</h3>
+                <p>
                     You can create your very own plans to help you maintain a healthy lifestyle or keep track of a
                     fitness routine.
                 </p>

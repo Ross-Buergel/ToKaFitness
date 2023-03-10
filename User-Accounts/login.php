@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- creates the title -->
         <br><br>
         <div class="box"></div>
-        <h1 class="standard-box-title">Login</h1>
+        <h1>Login</h1>
         <div class="box"></div>
         <br><br>
         <?php
@@ -75,10 +75,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <!-- creates input boxes for each input-->
         <form action="login.php" method="post">
-            <label for="email" class="standard-box-text">Email</label><br>
+            <label for="email">Email</label><br>
             <input name="email" type="text"><br><br>
 
-            <label for="password" class="standard-box-text">Password</label><br>
+            <label for="password">Password</label><br>
             <input name="password" type="password"><br><br>
 
             <input type = "submit" class = "submit-button">

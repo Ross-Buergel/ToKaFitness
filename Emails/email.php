@@ -7,7 +7,7 @@ include("../includes/header.php");
         <!-- creates the title -->
         <br><br>
         <div class="box"></div>
-        <h1 class="standard-box-title">Contact a Fitness Professional</h1>
+        <h1>Contact a Fitness Professional</h1>
         <div class="box"></div>
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -58,7 +58,7 @@ include("../includes/header.php");
         VALUES ('$email','$title','$message')";
                 $result = mysqli_query($dbc, $query);
                 ?>
-                <h2 class="standard-box-title">Message Sent</h2>
+                <h2>Message Sent</h2>
                 <?php
             }
         }
@@ -78,13 +78,13 @@ include("../includes/header.php");
 
         <!-- creates input boxes for each input-->
         <form name="form" action="email.php" method="post">
-            <label for="email" class="standard-box-text">Email</label><br>
+            <label for="email">Email</label><br>
             <input name="email" type="text"><br><br>
 
-            <label for="title" class="standard-box-text">Title</label><br>
+            <label for="title">Title</label><br>
             <input name="title" type="text"><br><br>
 
-            <label for="message" class="standard-box-text">Message</label><br>
+            <label for="message">Message</label><br>
             <textarea name="message" id="text" cols="50" rows="4" oninput="countText()"
                 style="resize:none;"></textarea><br>
 

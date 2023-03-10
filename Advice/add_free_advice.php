@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- creates the title -->
         <br><br>
         <div class="box"></div>
-        <h1 class="standard-box-title">Add Free Advice</h1>
+        <h1>Add Free Advice</h1>
         <div class="box"></div>
         <br><br>
         <?php
@@ -57,10 +57,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } ?>
         <form name="form" action="add_free_advice.php" method="POST">
             <!-- creates input boxes -->
-            <label for="title" class="standard-box-text">Title</label><br>
+            <label for="title">Title</label><br>
             <input name="title" type="text"><br><br>
 
-            <label for="message" class="standard-box-text">Message</label><br>
+            <label for="message">Message</label><br>
             <textarea name="message" id="text" cols="50" rows="4" oninput="countText()"
                 style="resize:none;"></textarea><br>
 
