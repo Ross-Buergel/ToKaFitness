@@ -4,7 +4,7 @@ include("../includes/header.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //gets the validation functions
-    
+
     require("../includes/validation_functions.php");
 
     //creates array containing error messages
@@ -39,39 +39,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-<div class="standard-box">
-    <div>
-        <!-- creates the title -->
-        <br><br>
-        <div class="box"></div>
-        <h1>Add Free Advice</h1>
-        <div class="box"></div>
-        <br><br>
-        <?php
-        //outputs errors
-        if (isset($errors) && !empty($errors && $errors != null)) {
-            echo '<h2 class = "error-text">The following errors occured</h2>';
-            foreach ($errors as $message) {
-                if ($message != "No Errors") {
-                    echo "<p class = 'error-text'>" . $message . "</p>";
-                }
+<div class="main-content">
+    <!-- creates the title -->
+    <br><br>
+    <h1>Add Free Advice</h1>
+    <br><br>
+    <?php
+    //outputs errors
+    if (isset($errors) && !empty($errors && $errors != null)) {
+        echo '<h2 class = "error-text">The following errors occured</h2>';
+        foreach ($errors as $message) {
+            if ($message != "No Errors") {
+                echo "<p class = 'error-text'>" . $message . "</p>";
             }
-        } ?>
-        <form name="form" action="add_free_advice.php" method="POST">
+        }
+    } ?>
+    <form name="form" action="add_free_advice.php" method="POST">
+        <div class="form-inner">
             <!-- creates input boxes -->
             <label for="title">Title</label><br>
             <input name="title" type="text"><br><br>
 
             <label for="message">Message</label><br>
-            <textarea name="message" id="text" cols="50" rows="4" oninput="countText()"
-                style="resize:none;"></textarea><br>
+            <textarea name="message" id="text" cols="50" rows="4" oninput="countText()" style="resize:none;"></textarea><br>
 
             <!-- creates character count -->
             <label for="characters">Characters: </label>
             <span id="characters">0</span>
             <span>/ 500</span><br><br>
             <input type="submit" class="submit-button">
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 <?php include("../includes/footer.html"); ?>

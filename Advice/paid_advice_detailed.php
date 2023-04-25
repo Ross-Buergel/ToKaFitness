@@ -23,31 +23,31 @@ WHERE user_id = '" . $_SESSION['user_id'] . "' AND paid_content_id = '" . $id . 
 $payment_confirmation = mysqli_query($dbc, $query);
 
 //outputs advcie if user has payed for it
-echo '<div class = "standard-box"><div>';
+echo '<div class = "main-content">';
 if (mysqli_num_rows($payment_confirmation) > 0) {
     while ($row = mysqli_fetch_array($paid_content, MYSQLI_ASSOC)) {
-        echo '<br><br><div class="box"></div>
+        echo '<br><br>
         <h1>' . $row['title'] . '</h1>
-        <div class="box"></div>
+        
 
         <p>' . $row['message'] . '</p>
-        <div class="box"></div>
+        
         <br>';
     }
     //outputs price if user has not payed for it
 } else {
     while ($row = mysqli_fetch_array($paid_content, MYSQLI_ASSOC)) {
-        echo '<br><br><div class="box"></div>
+        echo '<br><br>
     <h1>' . $row['title'] . '</h1>
-    <div class="box"></div>
+    
 
     <h2>This advice costs £' . $row['price'] . '</h2>
-    <div class="box"></div>
+    
     <br>
-    <button class = "submit-button"><a href = "checkout.php?id=' . $id . '">Continue to Checkout</a></button>';
+    <a class="button" href = "checkout.php?id=' . $id . '">Continue to Checkout</a>';
     }
 }
 //outputs the return to advice button whether the user has payed for advice or not
 echo '
-<button class = "submit-button"><a href = "advice_overview.php">Back to All Advice</a></button>
-</div></div>';
+<a class="button" href = "advice_overview.php">Back to All Advice</a>
+</div>';

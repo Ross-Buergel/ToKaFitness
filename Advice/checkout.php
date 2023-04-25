@@ -19,14 +19,9 @@ VALUES ('$id','" . $_SESSION['user_id'] . "', NOW())";
 $result = mysqli_query($dbc, $query);
 ?>
 <!-- creates message informing user of their purchase -->
-<div class="standard-box">
-    <div>
-        <br><br>
-        <div class="box"></div>
-        <h1>Checkout</h1>
-        <div class="box"></div>
-
-        <h2>Thank you for your purchase</h2>
-    </div>
+<div class="main-content">
+    <br><br>
+    <h1>Checkout</h1>
+    <h2>Thank you for your purchase</h2>
 </div>
 <?php include("../includes/footer.html"); ?>

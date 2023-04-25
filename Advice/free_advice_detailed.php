@@ -18,17 +18,17 @@ WHERE free_advice_id = '$id'";
 $result = mysqli_query($dbc, $query);
 
 //outputs the advice
-echo '<div class = "standard-box"><div>';
+echo '<div class = "main-content">';
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        echo '<br><br><div class="box"></div>
+        echo '<br><br>
         <h1>' . $row['title'] . '</h1>
-        <div class="box"></div>
+        
 
         <p>' . $row['message'] . '</p>
-        <div class="box"></div>';
+        ';
     }
 }
 echo '<br>
-<button class = "submit-button"><a href = "advice_overview.php">Back to All Advice</a></button>
-</div></div>';
+<a href = "advice_overview.php" class="button">Back to All Advice</a>
+</div>';

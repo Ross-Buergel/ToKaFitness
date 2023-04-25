@@ -101,19 +101,19 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
         if ($var = check_presence("first name", $_POST["first_name"])) {
             $errors[] = $var;
         }
-    
+
         if ($var = check_presence("last name", $_POST["last_name"])) {
             $errors[] = $var;
         }
-    
+
         if ($var = check_presence("email", $_POST["email"])) {
             $errors[] = $var;
         }
-    
+
         if ($var = check_presence("password", $_POST["password"])) {
             $errors[] = $var;
         }
-    
+
         if ($var = check_presence("password confirmation", $_POST["confirm_password"])) {
             $errors[] = $var;
         }
@@ -122,24 +122,24 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
         if ($var = check_length("first name", $_POST["first_name"], 0, 25)) {
             $errors[] = $var;
         }
-    
+
         if ($var = check_length("last name", $_POST["last_name"], 0, 25)) {
             $errors[] = $var;
         }
-    
+
         if ($var = check_length("email", $_POST["email"], 5, 40)) {
             $errors[] = $var;
         }
-    
+
         if ($var = check_length("password", $_POST["password"], 4, 255)) {
             $errors[] = $var;
         }
-    
+
         //checks that inputs that shouldnt contain an integer don't
         if ($var = check_contains_integer("First name", $_POST["first_name"])) {
             $errors[] = $var;
         }
-    
+
         if ($var = check_contains_integer("Last name", $_POST["last_name"])) {
             $errors[] = $var;
         }
@@ -186,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
             last_name = '$last_name', 
             email = '$email', 
             password = SHA2('$password', 256)
-             WHERE user_id = '".$_SESSION['user_id']."'";
+             WHERE user_id = '" . $_SESSION['user_id'] . "'";
             $result = mysqli_query($dbc, $query);
 
             $_SESSION['first_name'] = $first_name;
@@ -253,41 +253,43 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
     }
 }
 ?>
-<div class="standard-box">
-    <div><br><br>
-        <!--creates a title at the top of the page-->
-        <div class="box"></div>
-        <h1>Account Settings</h1>
-        <div class="box"></div>
+<div class="main-content">
+    <!--creates a title at the top of the page-->
 
-        <h2>Redeem a Code</h2>
-        <?php
-        //outputs errors that occur if user inputs a code
-        if (isset($contains_error) && $contains_error == True && isset($_POST['code'])) {
-            echo '<h2 class = "error-text">The following errors occured</h2>';
-            foreach ($errors as $message) {
-                if ($message != "No Errors") {
-                    echo "<p class = 'error-text'>" . $message . "</p>";
-                }
+    <h1>Account Settings</h1>
+
+
+    <h2>Redeem a Code</h2>
+    <?php
+    //outputs errors that occur if user inputs a code
+    if (isset($contains_error) && $contains_error == True && isset($_POST['code'])) {
+        echo '<h2 class = "error-text">The following errors occured</h2>';
+        foreach ($errors as $message) {
+            if ($message != "No Errors") {
+                echo "<p class = 'error-text'>" . $message . "</p>";
             }
-        } else if (isset($code_success_message)) {
-            echo $code_success_message . "<br><br>";
-        } ?>
-        <!--creates the boxes needed to input a code-->
-        <form action="account_settings.php" method="POST">
+        }
+    } else if (isset($code_success_message)) {
+        echo $code_success_message . "<br><br>";
+    } ?>
+    <!--creates the boxes needed to input a code-->
+    <form action="account_settings.php" method="POST">
+        <div class="form-inner">
             <label for="code">Code</label><br>
             <input name="code" type="text"><br><br>
 
             <input type="submit" class="submit-button"><br>
-        </form>
+        </div>
+    </form>
 
-        <!--creates a heading for the accessibility section of the page-->
-        <br><br>
-        <div class="box"></div>
-        <h2>Accessibility</h2>
+    <!--creates a heading for the accessibility section of the page-->
+    <br><br>
 
-        <!--creates the form needed to submit colour scheme requirements-->
-        <form action="account_settings.php" method="POST">
+    <h2>Accessibility</h2>
+
+    <!--creates the form needed to submit colour scheme requirements-->
+    <form action="account_settings.php" method="POST">
+        <div class="form-inner">
             <label for="colour_type">Colour Blindness Type</label><br>
             <select name="colour_type">
                 <option value="N/A">N/A</option>
@@ -296,27 +298,29 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
             </select><br><br>
 
             <input type="submit" class="submit-button"><br><br>
-        </form>
+        </div>
+    </form>
 
-        <!--creates the paragraph explaining how to increase font size-->
-        <p>
-            For increased font and button size please use the zoom tool built into your browser.
-            It can be accessed by holding the ctrl key and using the scroll wheel on your mouse or
-            by holding the ctrl key and + or - (next to the backspace key)
-        </p><br>
-        <div class="box"></div>
-        <h2>Account Details</h2>
-        <?php
-        //outputs errors that occur if user inputs account details
-        if (isset($contains_error) && $contains_error == True && isset($_POST['first_name'])) {
-            echo '<h2 class = "error-text">The following errors occured</h2>';
-            foreach ($errors as $message) {
-                if ($message != "No Errors") {
-                    echo "<p class = 'error-text'>" . $message . "</p>";
-                }
+    <!--creates the paragraph explaining how to increase font size-->
+    <p>
+        For increased font and button size please use the zoom tool built into your browser.
+        It can be accessed by holding the ctrl key and using the scroll wheel on your mouse or
+        by holding the ctrl key and + or - (next to the backspace key)
+    </p><br>
+
+    <h2>Account Details</h2>
+    <?php
+    //outputs errors that occur if user inputs account details
+    if (isset($contains_error) && $contains_error == True && isset($_POST['first_name'])) {
+        echo '<h2 class = "error-text">The following errors occured</h2>';
+        foreach ($errors as $message) {
+            if ($message != "No Errors") {
+                echo "<p class = 'error-text'>" . $message . "</p>";
             }
-        } ?>
-        <form action="account_settings.php" method="POST">
+        }
+    } ?>
+    <form action="account_settings.php" method="POST">
+        <div class="form-inner">
             <!-- autofills the users details -->
             <?php
 
@@ -331,40 +335,42 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
             $last_name = $row['last_name'];
             $email = $row['email'];
 
-            
-            
-                ?>
-                <!-- creates the required input boxes -->
-                <label for="first_name">First Name</label><br>
-                <input name="first_name" type="text" value="<?php echo $first_name ?>"><br><br>
 
-                <label for="last_name">Last Name</label><br>
-                <input name="last_name" type="text" value="<?php echo $last_name ?>"><br><br>
 
-                <label for="email">Email</label><br>
-                <input name="email" type="text" value="<?php echo $email ?>"><br><br>
+            ?>
+            <!-- creates the required input boxes -->
+            <label for="first_name">First Name</label><br>
+            <input name="first_name" type="text" value="<?php echo $first_name ?>"><br><br>
 
-                <label for="password">Password</label><br>
-                <input name="password" type="password"><br><br>
+            <label for="last_name">Last Name</label><br>
+            <input name="last_name" type="text" value="<?php echo $last_name ?>"><br><br>
 
-                <label for="confirm_password">Confirm Password</label><br>
-                <input name="confirm_password" type="password"><br><br>
+            <label for="email">Email</label><br>
+            <input name="email" type="text" value="<?php echo $email ?>"><br><br>
 
-                <input type="submit" class="submit-button"><br><br>
-        </form>
-        <div class="box"></div>
-        <h2>Change Password</h2>
-        <?php
-        //outputs errors that occur if user inputs account details
-        if (isset($contains_error) && $contains_error == True && isset($_POST['new_password'])) {
-            echo '<h2 class = "error-text">The following errors occured</h2>';
-            foreach ($errors as $message) {
-                if ($message != "No Errors") {
-                    echo "<p class = 'error-text'>" . $message . "</p>";
-                }
+            <label for="password">Password</label><br>
+            <input name="password" type="password"><br><br>
+
+            <label for="confirm_password">Confirm Password</label><br>
+            <input name="confirm_password" type="password"><br><br>
+
+            <input type="submit" class="submit-button"><br><br>
+        </div>
+    </form>
+
+    <h2>Change Password</h2>
+    <?php
+    //outputs errors that occur if user inputs account details
+    if (isset($contains_error) && $contains_error == True && isset($_POST['new_password'])) {
+        echo '<h2 class = "error-text">The following errors occured</h2>';
+        foreach ($errors as $message) {
+            if ($message != "No Errors") {
+                echo "<p class = 'error-text'>" . $message . "</p>";
             }
-        } ?>
-        <form action="account_settings.php" method="POST">
+        }
+    } ?>
+    <form action="account_settings.php" method="POST">
+        <div class="form-inner">
             <!-- creates the requred input boxes -->
             <label for="old_password">Old Password</label><br>
             <input name="old_password" type="password"><br><br>
@@ -376,18 +382,20 @@ if ($_SERVER['REQUEST_METHOD'] = "POST") {
             <input name="confirm_new_password" type="password"><br><br>
 
             <input type="submit" class="submit-button"><br><br>
-        </form>
+        </div>
+    </form>
 
-        <div class="box"></div>
-        <h2>Delete Account</h2>
-        <!-- creates the required input boxes-->
-        <form action="account_settings.php" method="POST">
+
+    <h2>Delete Account</h2>
+    <!-- creates the required input boxes-->
+    <form action="account_settings.php" method="POST">
+        <div class="form-inner">
             <label for="confirm_delete">Confirm Delete</label><br>
             <input type="checkbox" name="confirm_delete" value="True"><br><br>
 
             <input type="submit" class="submit-button" value="Delete Account" name="delete_account"><br><br>
-        </form>
-    </div>
+    </form>
+    </form>
 </div>
 <?php
 include("../includes/footer.html"); ?>

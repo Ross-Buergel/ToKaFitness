@@ -89,32 +89,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //redirects user to the login page
         header('Location: login.php');
     }
-
 }
 ?>
-<div class="standard-box">
-    <div>
-        <!-- creates the title -->
-        <br><br>
-        <div class="box"></div>
-        <h1>Register</h1>
-        <div class="box"></div>
-        <br><br>
+<div class="main-content">
+    <!-- creates the title -->
+    <br><br>
 
-        <?php
-        //outputs errors
-        if (isset($errors) && !empty($errors && $errors != null)) {
-            echo '<h2 class = "error-text">The following errors occured</h2>';
-            foreach ($errors as $message) {
-                if ($message != "No Errors") {
-                    echo "<p class = 'error-text'>" . $message . "</p>";
-                }
+    <h1>Register</h1>
+
+    <br><br>
+
+    <?php
+    //outputs errors
+    if (isset($errors) && !empty($errors && $errors != null)) {
+        echo '<h2 class = "error-text">The following errors occured</h2>';
+        foreach ($errors as $message) {
+            if ($message != "No Errors") {
+                echo "<p class = 'error-text'>" . $message . "</p>";
             }
-        } ?>
+        }
+    } ?>
 
 
-        <!-- creates input boxes for each input-->
-        <form action="register.php" method="post">
+    <!-- creates input boxes for each input-->
+    <form action="register.php" method="post">
+        <div class="form-inner">
             <label for="first_name">First Name</label><br>
             <input name="first_name" type="text"><br><br>
 
@@ -131,10 +130,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input name="confirm_password" type="password"><br><br>
 
             <input type="submit" class="submit-button">
-        </form>
-        <br>
-        <div class="box"></div>
-    </div>
+        </div>
+    </form>
+    <br>
 </div>
-</body>
 <?php include("../includes/footer.html"); ?>

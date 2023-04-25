@@ -4,7 +4,7 @@ include("../includes/header.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //gets the validation functions
-    
+
     require("../includes/validation_functions.php");
 
     //creates array containing error messages
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mysqli_num_rows($result) == 1) {
             //starts a session
             session_start();
-            
+
             //assigns values to session
             $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
@@ -44,48 +44,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             //redirects user to the home page
             header("Location: ../index.php");
-        }
-        else
-        {
+        } else {
             $contains_error = True;
             $errors[] = "No account found with the provided details";
         }
     }
-
 }
 ?>
-<div class="standard-box">
-    <div>
-        <!-- creates the title -->
-        <br><br>
-        <div class="box"></div>
-        <h1>Login</h1>
-        <div class="box"></div>
-        <br><br>
-        <?php
-        //outputs errors
-        if (isset($errors) && !empty($errors && $errors != null)) {
-            echo '<h2 class = "error-text">The following errors occured</h2>';
-            foreach ($errors as $message) {
-                if ($message != "No Errors") {
-                    echo "<p class = 'error-text'>".$message."</p>";
-                }
-            }
-        }?>
+<div class="main-content">
+    <!-- creates the title -->
+    <br><br>
 
-        <!-- creates input boxes for each input-->
-        <form action="login.php" method="post">
+    <h1>Login</h1>
+
+    <br><br>
+    <?php
+    //outputs errors
+    if (isset($errors) && !empty($errors && $errors != null)) {
+        echo '<h2 class = "error-text">The following errors occured</h2>';
+        foreach ($errors as $message) {
+            if ($message != "No Errors") {
+                echo "<p class = 'error-text'>" . $message . "</p>";
+            }
+        }
+    } ?>
+
+    <!-- creates input boxes for each input-->
+    <form action="login.php" method="post">
+        <div class="form-inner">
             <label for="email">Email</label><br>
             <input name="email" type="text"><br><br>
 
             <label for="password">Password</label><br>
             <input name="password" type="password"><br><br>
 
-            <input type = "submit" class = "submit-button">
-        </form>
-        <br>
-        <div class = "box"></div>
-    </div>
+            <input type="submit" class="submit-button">
+        </div>
+    </form>
+    <br>
+    <div class="box"></div>
 </div>
-</body>
 <?php include("../includes/footer.html"); ?>

@@ -2,13 +2,7 @@
 $page_title = "Create Plan";
 include("../includes/header.php");
 ?>
-<div class="standard-box">
-    <div>
-        <!-- creates the titles -->
-        <br><br>
-        <div class="box"></div>
-        <h1>Create a Plan</h1>
-        <div class="box"></div>
+
 <?php
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../User-Accounts/login.php");
@@ -49,47 +43,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = "INSERT INTO tbl_plans(user_id, title, message, date)
         VALUES ('" . $_SESSION['user_id'] . "','$title','$message', NOW())";
         $result = mysqli_query($dbc, $query);
-        ?>
+?>
 
         <h2>Plan Created</h2>
-        <div class="box"></div><br>
+        <br>
 <?php
     }
 }
-    ?>
-        <br><br>
-        <?php
-        //outputs errors
-        if (isset($errors) && !empty($errors && $errors != null)) {
-            echo '<h2 class = "error-text">The following errors occured</h2>';
-            foreach ($errors as $message) {
-                if ($message != "No Errors") {
-                    echo "<p class = 'error-text'>" . $message . "</p>";
-                }
-            }
-        } ?>
+?>
+<div class="main-content">
+    <!-- creates the titles -->
+    <br><br>
 
-        <!-- creates input boxes for each input-->
-        <form name="form" action="create_plan.php" method="post">
+    <h1>Create a Plan</h1>
+    <br><br>
+    <?php
+    //outputs errors
+    if (isset($errors) && !empty($errors && $errors != null)) {
+        echo '<h2 class = "error-text">The following errors occured</h2>';
+        foreach ($errors as $message) {
+            if ($message != "No Errors") {
+                echo "<p class = 'error-text'>" . $message . "</p>";
+            }
+        }
+    } ?>
+
+    <!-- creates input boxes for each input-->
+    <form name="form" action="create_plan.php" method="post">
+        <div class="form-inner">
             <label for="title">Title</label><br>
             <input name="title" type="text"><br><br>
 
             <label for="message">Message</label><br>
-            
-            <textarea name="message" id="text" cols="50" rows="20" oninput="countText()"
-                style="resize:none;"></textarea><br>
+
+            <textarea name="message" id="text" cols="50" rows="20" oninput="countText()" style="resize:none;"></textarea><br>
 
             <!-- creates character count -->
             <label for="characters">Characters: </label>
             <span id="characters">0</span>
             <span>/ 1000</span><br><br>
             <input type="submit" class="submit-button">
-        </form>
-        <br>
-        <div class="box"></div><br>
-        <button class = "submit-button"><a href = "plans.php">Back to All Plans</a></button>
-    </div>
+        </div>
+    </form>
+    <br>
+    <br>
+    <a href="plans.php" class="button">Back to All Plans</a>
 </div>
-
-</body>
-<?php include("../includes/footer.html");?>
+</div>
+<?php include("../includes/footer.html"); ?>

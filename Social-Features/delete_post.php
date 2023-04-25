@@ -16,7 +16,7 @@ if ($_SESSION['user_id'] == "1") {
         header("Location: posts.php");
     }
     //uses get method to get the id of the post so it can be submitted when the user confirms delete
-    else{
+    else {
         $id = $_GET['id'];
     }
 } else {
@@ -24,38 +24,38 @@ if ($_SESSION['user_id'] == "1") {
     header("Location: posts.php");
 }
 ?>
-<div class="standard-box">
-    <div><br><br>
-        <!--creates a title at the top of the page-->
-        <div class="box"></div>
-        <h1>Delete Post</h1>
-        <div class="box"></div>
-        <h2>Are you sure you want to delete this post?</h2>
-        <?php
-        $query = "SELECT * FROM tbl_social
+<div class="main-content">
+    <!--creates a title at the top of the page-->
+
+    <h1>Delete Post</h1>
+
+    <h2>Are you sure you want to delete this post?</h2>
+    <?php
+    $query = "SELECT * FROM tbl_social
         WHERE post_id = '" . $id . "'";
-        $result = mysqli_query($dbc, $query);
+    $result = mysqli_query($dbc, $query);
 
-        //gets the name of the user that made each post and outputs the posts
-        while ($reviews_array = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $query = "SELECT * FROM tbl_users
+    //gets the name of the user that made each post and outputs the posts
+    while ($reviews_array = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $query = "SELECT * FROM tbl_users
         WHERE user_id = '" . $reviews_array['user_id'] . "'";
-            $user_details = mysqli_query($dbc, $query);
-            while ($user_details_array = mysqli_fetch_array($user_details, MYSQLI_ASSOC)) {
-                echo '
+        $user_details = mysqli_query($dbc, $query);
+        while ($user_details_array = mysqli_fetch_array($user_details, MYSQLI_ASSOC)) {
+            echo '
                 <p><strong>' . $user_details_array['first_name'] . " " . $user_details_array['last_name'] .
-                    '<br>' . $reviews_array['title'] . '</strong><br>' .
-                    $reviews_array['message'] . '</p><br>';
-            }
+                '<br>' . $reviews_array['title'] . '</strong><br>' .
+                $reviews_array['message'] . '</p><br>';
         }
-        ?>
-        <!--creates the boxes needed to input a code-->
-        <form action="delete_post.php" method="POST">
+    }
+    ?>
+    <!--creates the boxes needed to input a code-->
+    <form action="delete_post.php" method="POST">
+        <div class="form-inner">
             <label for="confirm"></label><br>
-            <input type="submit" class="submit-button" name="confirm" value= "Confirm"><br><br>
+            <input type="submit" class="submit-button" name="confirm" value="Confirm"><br><br>
 
-            <input type = "hidden" value = "<?php echo $id?>" name = "id">
-        </form>
-    </div>
+            <input type="hidden" value="<?php echo $id ?>" name="id">
+        </div>
+    </form>
 </div>
-<?php include("../includes/footer.html");?>
+<?php include("../includes/footer.html"); ?>
